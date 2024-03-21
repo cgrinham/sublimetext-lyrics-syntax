@@ -1,0 +1,23 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+file_extensions:
+  - lyrics
+scope: source.example-c
+
+contexts:
+  main:
+    # The main context is the initial starting point of our syntax.
+    # Include other contexts from here (or specify them directly).
+    - include: chords
+    - include: section_title
+
+  section_title:
+    # Highlight section titles in square brackets
+    - match: '\[(.*)\]'
+      scope: constant.numeric.example-c
+
+  chords:
+    # Highlight chords as keywords
+    - match: '\b[A-G](#|b)?(m|dim|°|aug|\+)?(maj|min|add|sus|dim|aug)?\d*#?b?(add\d+)?\b'
+      scope: keyword.control.example-c
